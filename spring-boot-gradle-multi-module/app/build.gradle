@@ -2,4 +2,5 @@ dependencies {
     implementation project(':controller')
     implementation project(':entity')
     implementation project(':repository')
+    implementation project(':service')
 }

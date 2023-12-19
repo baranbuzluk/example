@@ -3,4 +3,5 @@ include("app")
 include("controller")
 include("entity")
 include 'repository'
+include 'service'
 

@@ -1,0 +1,8 @@
+plugins {
+    id 'org.springframework.boot' apply false
+}
+
+dependencies {
+    implementation project(":repository")
+    implementation project(":entity")
+}
