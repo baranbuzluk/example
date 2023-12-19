@@ -2,3 +2,5 @@ rootProject.name = "multi-module"
 include("app")
 include("controller")
 include("entity")
+include 'repository'
+
