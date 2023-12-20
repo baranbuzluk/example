@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExampleController {
 
-    @GetMapping("/")
-    public String getIndexPage() {
-        return "Hello Word";
-    }
-
+  @GetMapping("/")
+  public String getIndexPage() {
+    return "Hello Word";
+  }
 }
