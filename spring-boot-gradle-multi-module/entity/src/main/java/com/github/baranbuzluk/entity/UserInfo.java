@@ -8,8 +8,10 @@ import lombok.Data;
 @Entity
 @Data
 public class UserInfo {
-  @Id @GeneratedValue private Integer id;
+	@Id
+	@GeneratedValue
+	private Integer id;
 
-  private String firstName;
-  private String lastName;
+	private String firstName;
+	private String lastName;
 }
