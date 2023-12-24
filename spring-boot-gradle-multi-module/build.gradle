@@ -14,7 +14,7 @@ spotless {
             include '**/*.java'
             exclude '**/build/**', '**/build-*/**'
         }
-        googleJavaFormat()
+        eclipse()
         removeUnusedImports()
         trimTrailingWhitespace()
         endWithNewline()
