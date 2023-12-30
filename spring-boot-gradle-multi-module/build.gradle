@@ -8,35 +8,19 @@ plugins {
 }
 
 
-spotless {
-    java {
-        target fileTree('.') {
-            include '**/*.java'
-            exclude '**/build/**', '**/build-*/**'
-        }
-        eclipse()
-        removeUnusedImports()
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
-    groovyGradle {
-        target fileTree('.') {
-            include '**/*.gradle'
-            exclude '**/build/**', '**/build-*/**'
-        }
-        greclipse()
-        indentWithSpaces(4)
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
 group = 'com.github.baranbuzluk'
 version = '0.0.1-SNAPSHOT'
+tasks.named("spotlessApply") {
+    subprojects.forEach { dependsOn("${it.name}:spotlessApply") }
+}
+
+tasks.named("spotlessCheck") {
+    subprojects.forEach { dependsOn("${it.name}:spotlessApply") }
+}
 
 subprojects() {
     apply plugin: 'java'
@@ -65,6 +49,29 @@ subprojects() {
     dependencyManagement {
         imports {
             mavenBom SpringBootPlugin.BOM_COORDINATES
+        }
+    }
+
+    spotless {
+        java {
+            target fileTree('.') {
+                include '**/*.java'
+                exclude '**/build/**', '**/build-*/**'
+            }
+            eclipse()
+            removeUnusedImports()
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+        groovyGradle {
+            target fileTree('.') {
+                include '**/*.gradle'
+                exclude '**/build/**', '**/build-*/**'
+            }
+            greclipse()
+            indentWithSpaces(4)
+            trimTrailingWhitespace()
+            endWithNewline()
         }
     }
 
