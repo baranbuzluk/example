@@ -1,4 +1,4 @@
-package com.github.baranbuzluk.entity;
+package com.github.baranbuzluk.user;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,3 @@
-import com.bmuschko.gradle.docker.tasks.container.DockerCreateContainer
-import com.bmuschko.gradle.docker.tasks.container.DockerStartContainer
-import com.bmuschko.gradle.docker.tasks.image.DockerPullImage
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
@@ -19,20 +16,6 @@ repositories {
 group = 'com.github.baranbuzluk'
 version = '0.0.1-SNAPSHOT'
 
-task dockerPullDatabase(type: DockerPullImage) {
-    image = 'postgres'
-}
-task dockerCreateDatabaseContainer(type: DockerCreateContainer) {
-    imageId = 'postgres'
-    containerName = 'Postgres-Database'
-    envVars.put('POSTGRES_PASSWORD', 'postgres')
-    envVars.put('POSTGRES_DB', 'USER_DB')
-    hostConfig.portBindings = ['5432:5432']
-}
-task dockerStartDatabaseContainer(type: DockerStartContainer) {
-    containerId = 'Postgres-Database'
-    onError {}
-}
 
 tasks.named("spotlessApply") {
     subprojects.forEach { dependsOn("${it.name}:spotlessApply") }
@@ -47,6 +30,7 @@ subprojects() {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'com.diffplug.spotless'
+    apply plugin: 'com.bmuschko.docker-remote-api'
 
     java {
         sourceCompatibility = '17'

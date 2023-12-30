@@ -1,0 +1,19 @@
+import com.bmuschko.gradle.docker.tasks.container.DockerCreateContainer
+import com.bmuschko.gradle.docker.tasks.container.DockerStartContainer
+import com.bmuschko.gradle.docker.tasks.image.DockerPullImage
+
+
+task dockerPullDatabase(type: DockerPullImage) {
+    image = 'postgres'
+}
+task dockerCreateDatabaseContainer(type: DockerCreateContainer) {
+    imageId = 'postgres'
+    containerName = 'Postgres-Database'
+    envVars.put('POSTGRES_PASSWORD', 'postgres')
+    envVars.put('POSTGRES_DB', 'USER_DB')
+    hostConfig.portBindings = ['5432:5432']
+}
+task dockerStartDatabaseContainer(type: DockerStartContainer) {
+    containerId = 'Postgres-Database'
+    onError {}
+}
