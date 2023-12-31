@@ -1,4 +1,4 @@
-package com.github.baranbuzluk.user;
+package com.github.baranbuzluk.user.entity;
 
 import java.time.LocalDateTime;
 
@@ -12,14 +12,17 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
-
 	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime createdAt;
-
 	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime updatedAt;
 
 	private String username;
 	private String password;
 	private String email;
+
+	public User() {
+		createdAt = LocalDateTime.now();
+		updatedAt = createdAt;
+	}
 }
