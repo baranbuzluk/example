@@ -1,12 +1,11 @@
 package com.github.baranbuzluk.user.service;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.stereotype.Service;
-
 import com.github.baranbuzluk.user.entity.User;
 import com.github.baranbuzluk.user.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -26,5 +25,13 @@ public class UserService {
 
 	public List<User> findAll() {
 		return userRepository.findAll();
+	}
+
+	public void deleteAllUsers() {
+		userRepository.deleteAll();
+	}
+
+	public void deleteUser(Integer id) {
+		userRepository.deleteById(id);
 	}
 }

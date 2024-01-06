@@ -48,4 +48,14 @@ public class UserController {
 		return userService.saveUser(UserMapper.INSTANCE.toEntity(user));
 	}
 
+	@DeleteMapping
+	public void deleteAllUsers() {
+		userService.deleteAllUsers();
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable Integer id) {
+		userService.deleteUser(id);
+	}
+
 }
