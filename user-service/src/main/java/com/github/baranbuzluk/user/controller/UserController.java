@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.github.baranbuzluk.user.dto.CreateUser;
+import com.github.baranbuzluk.user.dto.UserDto;
 import com.github.baranbuzluk.user.entity.User;
 import com.github.baranbuzluk.user.mapper.UserMapper;
 import com.github.baranbuzluk.user.service.UserService;
@@ -29,7 +29,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	public User addUser(@RequestBody CreateUser user) {
+	public User addUser(@RequestBody UserDto user) {
 		return userService.addUser(UserMapper.INSTANCE.toEntity(user));
 	}
 
