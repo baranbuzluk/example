@@ -1,6 +1,7 @@
 package com.github.baranbuzluk.user.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,11 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
-	public User findById(Integer id) {
-		return userRepository.findById(id).orElse(null);
+	public Optional<User> find(Integer id) {
+		return userRepository.findById(id);
 	}
 
-	public User addUser(User user) {
+	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
 
